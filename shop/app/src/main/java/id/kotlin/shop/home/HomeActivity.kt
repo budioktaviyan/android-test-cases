@@ -1,7 +1,8 @@
-package id.kotlin.shop
+package id.kotlin.shop.home
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import id.kotlin.shop.R
 
 class HomeActivity : AppCompatActivity() {
 
