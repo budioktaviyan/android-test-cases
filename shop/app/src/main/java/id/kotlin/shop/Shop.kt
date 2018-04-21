@@ -22,4 +22,7 @@ class Shop : MultiDexApplication(), ShopDepsProvider {
 
     override val providesShopDeps: ShopDeps
         get() = deps
+
+    override val providesDatabaseDeps: Database
+        get() = database
 }

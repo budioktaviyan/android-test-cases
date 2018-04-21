@@ -5,6 +5,6 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity
-data class User(@PrimaryKey(autoGenerate = true) @ColumnInfo(name = "user_id") val id: Long,
+data class User(@PrimaryKey(autoGenerate = true) @ColumnInfo(name = "user_id") val id: Long = 0L,
                 @ColumnInfo(name = "username") val username: String?,
                 @ColumnInfo(name = "password") val password: String?)

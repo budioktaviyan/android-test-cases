@@ -15,8 +15,10 @@ class SplashActivity : AppCompatActivity(), SplashView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (application as? ShopDepsProvider)?.providesShopDeps?.inject(this)
-        presenter = SplashPresenter(this)
-        presenter.userChecking()
+        (application as? ShopDepsProvider)?.providesDatabaseDeps?.let {
+            presenter = SplashPresenter(this, it)
+            presenter.userChecking()
+        }
     }
 
     override fun onDestroy() {

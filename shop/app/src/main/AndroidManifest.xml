@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name="id.kotlin.shop.home.HomeActivity" />
-        <activity android:name="id.kotlin.shop.login.LoginActivity" />
+        <activity
+            android:name="id.kotlin.shop.login.LoginActivity"
+            android:windowSoftInputMode="stateAlwaysVisible" />
     </application>
 </manifest>
