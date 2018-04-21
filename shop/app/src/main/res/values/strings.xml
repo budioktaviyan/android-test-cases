@@ -3,4 +3,11 @@
     <string name="input_username">Input username</string>
     <string name="input_password">Input password</string>
     <string name="login">Login</string>
+    <string name="home">Home</string>
+    <string name="input_product_name">Input product name</string>
+    <string name="input_product_quantity">Input product quantity</string>
+    <string name="input_supplier_name">Input supplier name</string>
+    <string name="input_date">Input date(dd/MMM/yyyy)</string>
+    <string name="notes">Notes</string>
+    <string name="save">Save</string>
 </resources>

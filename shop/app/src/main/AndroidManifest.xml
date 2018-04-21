@@ -21,7 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="id.kotlin.shop.home.HomeActivity" />
+        <activity
+            android:name="id.kotlin.shop.home.HomeActivity"
+            android:label="@string/home"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="id.kotlin.shop.login.LoginActivity"
             android:windowSoftInputMode="stateAlwaysVisible" />
