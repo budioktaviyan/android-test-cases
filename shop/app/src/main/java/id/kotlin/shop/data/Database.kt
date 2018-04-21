@@ -11,7 +11,7 @@ import id.kotlin.shop.data.user.UserDao
 [
     User::class,
     Product::class
-], version = 1)
+], version = 1, exportSchema = false)
 abstract class Database : RoomDatabase() {
 
     abstract fun userDao(): UserDao
