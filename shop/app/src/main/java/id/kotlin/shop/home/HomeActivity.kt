@@ -1,12 +1,17 @@
 package id.kotlin.shop.home
 
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import id.kotlin.shop.R
 import id.kotlin.shop.data.product.Product
 import id.kotlin.shop.deps.ShopDepsProvider
 import kotlinx.android.synthetic.main.activity_home.*
+import java.util.Calendar
 
 class HomeActivity : AppCompatActivity(), HomeView {
 
@@ -23,6 +28,17 @@ class HomeActivity : AppCompatActivity(), HomeView {
         setSupportActionBar(toolbar_home)
         supportActionBar?.apply {
             title = title
+        }
+        et_product_date.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val calendarDay = calendar.get(Calendar.DAY_OF_MONTH)
+            val calendarMonth = calendar.get(Calendar.MONTH)
+            val calendarYear = calendar.get(Calendar.YEAR)
+
+            DatePickerDialog(this, OnDateSetListener { _, year, month, dayOfMonth ->
+                val date = "$dayOfMonth/${month.plus(1)}/$year"
+                et_product_date.setText(date)
+            }, calendarYear, calendarMonth, calendarDay).show()
         }
         btn_save.setOnClickListener {
             val productName = et_product_name.text.toString()
@@ -45,6 +61,18 @@ class HomeActivity : AppCompatActivity(), HomeView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.shop, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.menu_shop_detail -> Toast.makeText(this, "Show detail...", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSaveFailed() {

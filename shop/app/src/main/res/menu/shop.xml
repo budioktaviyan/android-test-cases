@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_shop_detail"
+        android:icon="@drawable/bg_menu_more"
+        android:title="@string/detail"
+        app:showAsAction="always" />
+</menu>

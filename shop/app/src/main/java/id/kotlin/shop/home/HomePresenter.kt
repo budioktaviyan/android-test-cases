@@ -14,9 +14,9 @@ class HomePresenter(private val view: HomeView,
 
     fun save(product: Product) {
         if (product.name.isNullOrBlank()
-        &&  product.quantity.isNullOrBlank()
-        &&  product.supplier.isNullOrBlank()
-        &&  product.date.isNullOrBlank()) {
+        ||  product.quantity.isNullOrBlank()
+        ||  product.supplier.isNullOrBlank()
+        ||  product.date.isNullOrBlank()) {
             view.onSaveFailed()
             return
         }
