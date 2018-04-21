@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import id.kotlin.shop.R
+import id.kotlin.shop.data.product.Product
 import id.kotlin.shop.deps.ShopDepsProvider
 import id.kotlin.shop.ext.getDrawableResource
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 class DetailActivity : AppCompatActivity(), DetailView {
 
     private lateinit var presenter: DetailPresenter
+    private lateinit var adapter: DetailAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +20,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
         (application as? ShopDepsProvider)?.providesShopDeps?.inject(this)
         (application as? ShopDepsProvider)?.providesDatabaseDeps?.let {
             presenter = DetailPresenter(this, it)
+            presenter.load()
         }
 
         toolbar_detail.navigationIcon = getDrawableResource(R.drawable.bg_menu_back)
@@ -39,5 +42,10 @@ class DetailActivity : AppCompatActivity(), DetailView {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onLoadSuccess(products: List<Product>) {
+        adapter = DetailAdapter(products)
+        rv_detail.adapter = adapter
     }
 }

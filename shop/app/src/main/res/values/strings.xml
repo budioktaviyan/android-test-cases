@@ -11,4 +11,8 @@
     <string name="notes">Notes</string>
     <string name="save">Save</string>
     <string name="detail">Detail</string>
+    <string name="product_name">Product name: %1$s</string>
+    <string name="product_quantity">Quantity: %1$s</string>
+    <string name="product_supplier">Supplier: %1$s</string>
+    <string name="product_date">Date: %1$s</string>
 </resources>
