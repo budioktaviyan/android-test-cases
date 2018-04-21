@@ -2,6 +2,7 @@ package id.kotlin.shop.login
 
 import com.nhaarman.mockito_kotlin.mock
 import id.kotlin.shop.data.Database
+import id.kotlin.shop.data.user.User
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
@@ -15,7 +16,8 @@ class LoginPresenterTest : Spek({
         val presenter = LoginPresenter(view, database)
 
         on("Do login") {
-            presenter.login("budi", "oktaviyan")
+            val user = User(username = "budi", password = "oktaviyan")
+            presenter.login(user)
 
             it("Should return to home screen") {
                 view.onLoginSuccess()
@@ -23,12 +25,11 @@ class LoginPresenterTest : Spek({
         }
 
         on("Do login with fresh install") {
-            val username = "admin"
-            val password = "password"
-            presenter.login(username, password)
+            val user = User(username = "admin", password = "password")
+            presenter.login(user)
 
             it("Should stay at current screen") {
-                view.onUserCreated(username, password)
+                view.onUserCreated(user)
             }
         }
     }

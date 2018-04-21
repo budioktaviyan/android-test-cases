@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import id.kotlin.shop.R
+import id.kotlin.shop.data.user.User
 import id.kotlin.shop.deps.ShopDepsProvider
 import id.kotlin.shop.router.ShopRouter
 import kotlinx.android.synthetic.main.activity_login.*
@@ -26,7 +27,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
         btn_login.setOnClickListener {
             val username = et_username.text.toString()
             val password = et_password.text.toString()
-            presenter.login(username, password)
+            val user = User(username = username, password = password)
+            presenter.login(user)
         }
     }
 
@@ -35,10 +37,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
         presenter.onDestroy()
     }
 
-    override fun onUserCreated(username: String,
-                               password: String) {
+    override fun onUserCreated(user: User) {
         Toast.makeText(this, "Created default user...", Toast.LENGTH_SHORT).show()
-        presenter.create(username, password)
+        presenter.create(user)
     }
 
     override fun onLoginSuccess() {

@@ -14,23 +14,20 @@ class LoginPresenter(private val view: LoginView,
 
     private val disposables by lazy { CompositeDisposable() }
 
-    fun login(username: String,
-              password: String) {
+    fun login(user: User) {
         val dao = database.userDao()
-        val disposable = dao.findById(username)
+        val disposable = dao.findById(user.username ?: "")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         { view.onLoginSuccess() },
-                        { _ -> view.onUserCreated(username, password) }
+                        { _ -> view.onUserCreated(user) }
                 )
         disposables.add(disposable)
     }
 
-    fun create(username: String,
-               password: String) {
+    fun create(user: User) {
         val dao = database.userDao()
-        val user = User(username = username, password = password)
         val disposable = Flowable.timer(1000L, MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .subscribe({

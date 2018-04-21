@@ -1,7 +1,9 @@
 package id.kotlin.shop.login
 
+import id.kotlin.shop.data.user.User
+
 interface LoginView {
 
-    fun onUserCreated(username: String, password: String)
+    fun onUserCreated(user: User)
     fun onLoginSuccess()
 }
