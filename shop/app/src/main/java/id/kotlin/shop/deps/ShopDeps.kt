@@ -1,6 +1,7 @@
 package id.kotlin.shop.deps
 
 import dagger.Component
+import id.kotlin.shop.detail.DetailActivity
 import id.kotlin.shop.home.HomeActivity
 import id.kotlin.shop.login.LoginActivity
 import id.kotlin.shop.main.SplashActivity
@@ -15,4 +16,5 @@ interface ShopDeps {
     fun inject(splashActivity: SplashActivity)
     fun inject(loginActivity: LoginActivity)
     fun inject(homeActivity: HomeActivity)
+    fun inject(detailActivity: DetailActivity)
 }

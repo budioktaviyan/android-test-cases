@@ -2,6 +2,7 @@ package id.kotlin.shop.router
 
 import android.app.Activity
 import android.content.Intent
+import id.kotlin.shop.detail.DetailActivity
 import id.kotlin.shop.ext.clazz
 import id.kotlin.shop.home.HomeActivity
 import id.kotlin.shop.login.LoginActivity
@@ -18,5 +19,10 @@ class ShopRouter {
         val intent = Intent(activity, clazz<HomeActivity>())
         activity.startActivity(intent)
         activity.finish()
+    }
+
+    fun launchDetail(activity: Activity) {
+        val intent = Intent(activity, clazz<DetailActivity>())
+        activity.startActivity(intent)
     }
 }

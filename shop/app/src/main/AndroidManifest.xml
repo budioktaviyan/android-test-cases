@@ -28,5 +28,8 @@
         <activity
             android:name="id.kotlin.shop.login.LoginActivity"
             android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name="id.kotlin.shop.detail.DetailActivity"
+            android:label="@string/detail" />
     </application>
 </manifest>

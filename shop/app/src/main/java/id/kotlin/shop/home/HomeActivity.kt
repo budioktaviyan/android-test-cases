@@ -10,10 +10,14 @@ import android.widget.Toast
 import id.kotlin.shop.R
 import id.kotlin.shop.data.product.Product
 import id.kotlin.shop.deps.ShopDepsProvider
+import id.kotlin.shop.router.ShopRouter
 import kotlinx.android.synthetic.main.activity_home.*
 import java.util.Calendar
+import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity(), HomeView {
+
+    @Inject lateinit var router: ShopRouter
 
     private lateinit var presenter: HomePresenter
 
@@ -70,7 +74,7 @@ class HomeActivity : AppCompatActivity(), HomeView {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-            R.id.menu_shop_detail -> Toast.makeText(this, "Show detail...", Toast.LENGTH_SHORT).show()
+            R.id.menu_shop_detail -> router.launchDetail(this)
         }
         return super.onOptionsItemSelected(item)
     }
