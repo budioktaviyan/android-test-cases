@@ -3,6 +3,7 @@
           package="id.kotlin.shop">
 
     <application
+        android:name="id.kotlin.shop.Shop"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
